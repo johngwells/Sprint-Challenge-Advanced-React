@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import axios from 'axios';
 import Players from './components/Players';
+import LightMode from './components/LightMode';
 
 class App extends React.Component {
   constructor() {
@@ -30,13 +30,10 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Worlds Womens Cup
-          </p>
+        <LightMode />
+        <header className='App-header'>
           <Players players={this.state.players} />
-          </header>
+        </header>
       </div>
     );
   }
