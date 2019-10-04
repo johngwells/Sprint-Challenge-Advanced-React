@@ -5,6 +5,7 @@ const PlayerCard = ({ player }) => {
     <div>
       {console.log(player)}
       <h1>Player: {player.name}</h1>
+      <p>{player.searches}</p>
     </div>
   );
 }
