@@ -9,6 +9,7 @@ const Players = ({ players }) => {
           {console.log(player)}
           <h2>{player.name}</h2>
           <p>{player.country}</p>
+          <p>({player.searches})</p>
         </div>
       ))}
     </div>

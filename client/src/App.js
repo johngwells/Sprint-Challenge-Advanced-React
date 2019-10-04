@@ -6,6 +6,7 @@ import Players from './components/Players';
 import LightMode from './components/LightMode';
 
 class App extends React.Component {
+  _isMounted = false;
   constructor() {
     super();
 
@@ -15,24 +16,32 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
+
     axios
       .get('http://localhost:5000/api/players')
       .then(res => {
-        console.log(res);
-        this.setState({ players: res.data });
+        // console.log(res);
+        if (this._isMounted) {
+          this.setState({ players: res.data });
+        }
       })
       .catch(err => {
         console.log('data not returned');
     });
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="App">
         <LightMode />
         <header className='App-header'>
-          <Players players={this.state.players} />
+          <Players data-testid='players-header' players={this.state.players} />
         </header>
       </div>
     );
